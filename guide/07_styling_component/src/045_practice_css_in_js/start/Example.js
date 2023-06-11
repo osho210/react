@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 const FirstButton = styled.button`
@@ -7,9 +8,24 @@ const FirstButton = styled.button`
   margin: 0.5rem 1rem;
   width: 11rem;
   border: none;
+  background: pink;
 `;
 
+const SecondButton = styled(FirstButton)`
+background: red;
+color: white;
+`
+const ThirdButton = styled(SecondButton)`
+background: ${({color}) => color ? 'black': 'green'};
+`
+
+
 const Example = () => {
+  const [color, colorSet] = useState(true)
+
+  const ChangeColor = ()=>{
+    colorSet(color => !color)
+  }
   return (
     <>
       <h3>練習問題</h3>
@@ -28,8 +44,14 @@ const Example = () => {
         </ul>
       </p>
       <FirstButton>ボタン1</FirstButton>
+      <SecondButton>ボタン2</SecondButton>
+      <ThirdButton >ボタン3</ThirdButton>
+      <ThirdButton color={color} onClick={ChangeColor}>ボタン3</ThirdButton>
+      {/* <ThirdButton dark={dark} >ボタン4</ThirdButton> */}
     </>
   );
 };
 
 export default Example;
+
+// この状態で参照していたカラーがprops前のものだったのでpropsで受け渡した値に変更した

@@ -7,6 +7,11 @@ import Modal from "./components/Modal";
 第二引数: レンダー先のDOM要素
 */
 
+const ModalPortal = ({children}) => {
+  const target = document.querySelector('.container.start')
+  return createPortal(children,target)
+}
+
 /* POINT createPortalはどんなときに使うか？
 子要素は親要素のスタイルによって表示に制限を受ける場合があります。
 （overflow: hidden 、 z-index 、 width　など・・・ ）
@@ -19,7 +24,6 @@ const Example = () => {
   return (
     <div>
       <div className="container start"></div>
-
       <button
         type="button"
         onClick={() => setModalOpen(true)}
@@ -27,9 +31,17 @@ const Example = () => {
       >
         モーダルを表示する
       </button>
-      {modalOpen && <Modal handleCloseClick={() => setModalOpen(false)} />}
+      {/* modalOpenがtrueの場合処理を行う */}
+      {modalOpen &&
+      ( <ModalPortal>
+          <Modal handleCloseClick={()=>setModalOpen(false)} />
+        </ModalPortal>
+      )}
     </div>
   );
 };
 
 export default Example;
+
+// modalwindownなどdomを間接的に直接いじりたい場合にしようしたい処理などの利用に使用されるのが
+// 今回学習するmodal,createPortal

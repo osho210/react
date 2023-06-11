@@ -9,3 +9,4 @@ const Example = () => {
 };
 
 export default Example;
+// 配列のindexをkeyにすると配列の中身が変更になると値が変わってしまう

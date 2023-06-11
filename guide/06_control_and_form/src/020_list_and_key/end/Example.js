@@ -7,7 +7,7 @@ const Example = () => {
   }
 
   const helloAnimals = animals.map((animal) => {
-    return <li>Hello {animal}</li>;
+    return <li key={animal}>Hello {animal}</li>;
   });
 
   return (

@@ -8,3 +8,5 @@ const Example = () => {
 };
 
 export default Example;
+
+// 同じオブジェクトではなく再生成するとイミュータブルなオブジェクトになる

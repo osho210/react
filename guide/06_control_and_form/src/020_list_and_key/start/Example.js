@@ -8,7 +8,7 @@ const Example = () => {
   }
 
   const helloAnimals = animals.map((animal) => {
-    return <li>Hello {animal}</li>;
+    return <li key={animal}>Hello {animal}</li>;
   });
 
   return (
@@ -21,10 +21,14 @@ const Example = () => {
         {helloAnimals} */}
         {/* {animalList} */}
 
-        {animals.map((animal) => <li>Hello, {animal}</li>)}
+        {animals.map((animal) => <li key={animal}>Hello, {animal}</li>)}
       </ul>
     </>
   );
 };
 
 export default Example;
+
+// mapでkeyを持たせることで全て洗い直してdom要素を作成するのではなく、keyに含まれていない
+// もののみを作成するようになる
+// 配列のindexは使用しない　-> 

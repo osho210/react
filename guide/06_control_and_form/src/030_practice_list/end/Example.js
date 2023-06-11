@@ -27,7 +27,7 @@ const Example = () => {
             /* リストにはkeyを設定することを忘れないように！ */
             <li key={person.name}>
             <Profile {...person} />
-          </li>
+            </li>
         ))}
       </ul>
     </>
